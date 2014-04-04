@@ -2,3 +2,4 @@ This is a new file with only two lines so far. More to come.
 ^D
 Oops... meant to type <ctrl>-d
 Really exceeding that line declaration now...
+Adding another line as another 'cat' command!
