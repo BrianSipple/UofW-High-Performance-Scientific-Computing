@@ -1,0 +1,24 @@
+
+Code run by Brian Sipple
+Environment variable UWHPSC is /Users/BrianSipple/Development/HPC/uwhpsc
+Environment variable MYHPSC is /Users/BrianSipple/Development/HPC/uwhpsc/hpsc-class
+
+which ipython returns...
+/usr/local/bin/ipython
+
+which gfortran returns...
+/usr/local/bin/gfortran
+
+gfortran --version returns...
+GNU Fortran (GCC) 4.8.2
+Copyright (C) 2013 Free Software Foundation, Inc.
+
+GNU Fortran comes with NO WARRANTY, to the extent permitted by law.
+You may redistribute copies of GNU Fortran
+under the terms of the GNU General Public License.
+For more information about these matters, see the file named COPYING
+
+
+Compiling and running a Fortran code...
+ Code run by  **INSERT YOUR NAME HERE**
+ Successfully ran Fortran 90 program
