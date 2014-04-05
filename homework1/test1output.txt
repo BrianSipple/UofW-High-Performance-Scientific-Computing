@@ -1,0 +1,6 @@
+Code run by Brian Sipple
+Environment variable UWHPSC is /Users/BrianSipple/Development/HPC/uwhpsc
+Environment variable MYHPSC is /Users/BrianSipple/Development/HPC/uwhpsc/hpsc-class
+Imported numpy ok
+Imported matplotlib ok
+Imported pylab ok
