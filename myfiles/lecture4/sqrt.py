@@ -17,12 +17,24 @@ Enhancements: max_iteration and tolerance -- cap the iterations, but check the d
 
 """
 
-def sqrt(number, guess, max_iterations=200, tolerance=1.e-14):
+def sqrt(number, guess, max_iterations=200, tolerance=1.e-14, debug=False):
 	
+	from numpy import nan
+
+	# Defensive measures
+	if number == 0.:
+		return 0.
+	elif number < 0:
+		print ("*** Error, x must be nonnegative!")
+		return nan
+
+	assert number > 0. and type(x) is float, "Unrecognized input!"
+
 	s = guess
 
 	for k in range(max_iterations):
-		print ("Before iteration: %s, s = %20.15f" % (k, s))
+		if debug:
+			print ("Before iteration: %s, s = %20.15f" % (k, s))
 		s0 = s
 		s = 0.5 * (s + number/s)
 		delta_s = s - s0
