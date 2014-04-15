@@ -1,7 +1,8 @@
 """
 Demonstration script for quadratic interpolation.
 Update this docstring to describe your code.
-Modified by: ** your name here **
+
+Modified by: Brian Sipple
 """
 
 import numpy as np

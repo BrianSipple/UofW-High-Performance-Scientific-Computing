@@ -48,8 +48,10 @@ yi = np.array([0, 4, 3])
 
 
 # It would be better to define A in terms of the xi points.
-A = np.array([ [ 1., x * 1., x**2 ] for x in xi ])
+#A = np.array([ [1., x*1., x**2] for x in xi ])
 
+# in addition to list expressions, we can use the np.vstack method:
+A = np.vstack( [np.ones(3), xi, xi**2]).T
 			  				
 b = yi
 
@@ -73,4 +75,4 @@ plt.ylim(-2,8)         # set limits in y for plot
 
 plt.title("Data points and interpolating polynomial")
 
-plt.savefig('demo1plot.png')   # save figure as .png file
+plt.savefig('hw2a.png')   # save figure as .png file
