@@ -132,14 +132,28 @@ def poly_interp(xi, yi):
     assert len(xi) == len(yi), error_message
 
     error_message = "xi and yi must be of the type ndarray"
-    assert (type(xi) is np.ndarray) and (type(yi) is ndarray), error_message
+    assert (type(xi) is np.ndarray) and (type(yi) is np.ndarray), error_message
 
-    A = np.vstack([ np.ones(len(xi)), xi ]).T     #start the matrix here
+    size = len(xi)
 
-    exponents = range(2, len(xi), 1)    #get a list of all the exponents that we'll be using for the matrix
+    A = np.ones(size)             #start the matrix here
 
-    for i in exponents:
-        A.append(xi**i)
+    for i in range(2, size+1):
+        A = np.vstack([A, xi**i])
+
+    A = A.T
+
+    #exponents = range(2, len(xi), 1)    #get a list of all the exponents that we'll be using for the matrix
+
+    #for i in exponents:
+     #   A.append(xi**i)
+
+    b = yi
+    c = solve(A, b)
+
+    print "The coefficients are: "
+    print c
+    return c
 
 
 
@@ -209,6 +223,47 @@ def test_cubic():
     plt.title("Data points and interpolating polynomial")
 
 
+
+
+def poly_test():
+    xi = np.array([-1., 0., 2., 3.])
+    yi = np.array([1., 2., 3., 0.])
+
+    c = poly_interp(xi, yi)
+    c_true = np.array([2.,1.33333333,0.08333333, -0.25])
+
+    print "c found = ", c
+    print "c true = ", c_true
+
+    #test that all elements that have a small error
+    assert np.allclose(c, c_true), \
+        "Incorrect result, c found = %s, expected = %s" % (c, c_true)
+
+
+def plot_poly(xi, yi):
+
+    c = poly_interp(xi, yi)
+
+    x = np.linspace(xi.min()-1, xi.max()+1, 1000)
+    
+    size = len(c)
+    y = c[0]
+    
+    for i in range(1, size):
+        y += c[i] *x**i
+
+
+    plt.figure(1)         # open the plot figure view
+    plt.clf()             # clear the figure
+    plt.plot(x, y, 'b-')  #connect the points with a blue line
+
+    #add data points (polynomial should go through these points!)
+    plt.plot(xi, yi, 'ro')      #plot as red circles
+    plt.ylim( y.min() - ( (y.max()-y.min())/4 ), y.max() + ( (y.max()-y.min())/4 ) )
+
+    plt.title("Data points and interpolating polynomial")
+
+    print y
 
 
 if __name__=="__main__":
