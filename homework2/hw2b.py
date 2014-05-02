@@ -136,12 +136,10 @@ def poly_interp(xi, yi):
 
     size = len(xi)
 
-    A = np.ones(size)             #start the matrix here
-
-    for i in range(2, size+1):
-        A = np.vstack([A, xi**i])
-
-    A = A.T
+    A = []                      # Start with an empty list
+    for j in range(len(xi)):    # Loop through the polynomial exponents
+        A.append(xi**j)         # Add the Numpy array xi**j to A
+    A = np.array(A).T           # Turn A into a Numpy array and transpose
 
     #exponents = range(2, len(xi), 1)    #get a list of all the exponents that we'll be using for the matrix
 
@@ -247,11 +245,11 @@ def plot_poly(xi, yi):
     x = np.linspace(xi.min()-1, xi.max()+1, 1000)
     
     size = len(c)
-    y = c[0]
     
-    for i in range(1, size):
-        y += c[i] *x**i
-
+    y = c[size-1]
+    for j in range(size-1, 0, -1):
+        y = y*x + c[j-1]
+    
 
     plt.figure(1)         # open the plot figure view
     plt.clf()             # clear the figure
