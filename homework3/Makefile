@@ -1,5 +1,5 @@
 
-OBJECTS = random_util.o approx_norm.o main.o
+OBJECTS = random_util.o approx_norm.o main.o, intersections.o, test1.o
 FFLAGS = -O2
 
 # These flags might be useful for debugging...
